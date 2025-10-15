@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live Location Tracker & Route Optimizer</title>
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>🧭 Work Sites Planner</h1>
+    </header>
+
+    <main class="app">
+      <section class="controls">
+        <div class="actions">
+          <button id="btn-detect" class="btn primary">📍 Detect My Location</button>
+          <button id="btn-nearest" class="btn">🧭 Find Nearest Site</button>
+          <button id="btn-gmaps" class="btn success">🗺️ Open Optimized Route in Google Maps</button>
+        </div>
+
+        <div class="sites-panel">
+          <div class="sites-header">
+            <h2>Sites (max 10)</h2>
+            <div class="start-row">
+              <input id="start-input" type="text" placeholder="Set start location (optional)" />
+              <button id="btn-set-start" class="btn">Set Start</button>
+              <button id="btn-clear-start" class="btn danger">Clear</button>
+              <button id="btn-pick-start" class="btn">Pick Start on Map</button>
+              <div id="start-autocomplete" class="autocomplete" hidden></div>
+            </div>
+            <div class="add-site">
+              <input id="site-input" type="text" placeholder="e.g., Modipuram Meerut" />
+              <button id="btn-add" class="btn">Add</button>
+              <div id="autocomplete" class="autocomplete" hidden></div>
+              <button id="btn-pick-dest" class="btn">Pick Destination on Map</button>
+            </div>
+          </div>
+          <ul id="sites-list" class="sites-list"></ul>
+        </div>
+
+        <div class="info-panel">
+          <div class="info-row"><span class="label">Nearest Site:</span> <span id="nearest-name">—</span></div>
+          <div class="info-row"><span class="label">Distance:</span> <span id="nearest-distance">—</span></div>
+          <div class="info-row"><span class="label">Route Order:</span> <span id="route-order">—</span></div>
+          <div class="tip">Tip: The nearest site updates automatically as you move.</div>
+        </div>
+      </section>
+
+      <section class="map-wrap">
+        <div id="map"></div>
+      </section>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="script.js"></script>
+  </body>
+  </html>
+
+
